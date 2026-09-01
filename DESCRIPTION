@@ -1,0 +1,34 @@
+Package: fastgbm
+Type: Package
+Title: Fast Histogram Gradient Boosting for Regression, Classification,
+        and Survival Analysis
+Version: 0.6.1
+Authors@R: person("Imad", "El Badisy", email = "elbadisyimad@gmail.com", role = c("aut", "cre"))
+Description: A fast gradient boosting machine covering four task types with
+    one interface: regression (squared error), binary and multiclass
+    classification (logistic and one-vs-rest), and right-censored survival
+    analysis via Cox (Breslow ties), accelerated failure time (normal
+    location-scale), or piecewise-exponential objectives. Provides
+    native missing-value routing, baseline-hazard estimation and
+    survival-probability prediction for the survival objectives, and
+    deterministic multi-threaded training via 'RcppParallel'. Methods are
+    described in Friedman (2001) <doi:10.1214/aos/1013203451>.
+License: MIT + file LICENSE
+URL: https://github.com/ielbadisy/fastgbm
+BugReports: https://github.com/ielbadisy/fastgbm/issues
+Encoding: UTF-8
+Depends: R (>= 4.5.0)
+Imports: stats, utils, Rcpp, RcppParallel
+LinkingTo: Rcpp, RcppParallel
+Suggests: testthat (>= 3.0.0), knitr, rmarkdown, survival, ggplot2,
+        pdp, gbm, xgboost, ranger
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+SystemRequirements: C++17, GNU make
+RoxygenNote: 7.3.3
+NeedsCompilation: yes
+Packaged: 2026-08-21 22:11:27 UTC; imad-el-badisy
+Author: Imad El Badisy [aut, cre]
+Maintainer: Imad El Badisy <elbadisyimad@gmail.com>
+Repository: CRAN
+Date/Publication: 2026-09-01 11:50:12 UTC
