@@ -1,3 +1,50 @@
+# fastgbm 0.7.0
+
+## Installation
+
+* The minimum R version is lowered from 4.5.0 to 4.1.0. Nothing in the
+  package needs R 4.5, and the old floor blocked installation (and the
+  installation of packages that import 'fastgbm') on R 4.4 and earlier.
+
+## Competing risks (`comrisk`)
+
+* `fastgbm()` gains `comrisk = c("sh", "csh", "ccsh")`, the three competing
+  risks options of 'CoxBoost' (Binder et al. 2009), with trees in place of
+  componentwise linear updates:
+  * `"sh"`: Fine-Gray subdistribution hazard for one cause (`cause`, default
+    the first), a new compiled `"finegray"` objective with inverse
+    probability of censoring weighted risk sets (Kaplan-Meier of the
+    censoring distribution, as in 'CoxBoost').
+  * `"csh"`: one independent cause-specific Cox booster per cause.
+  * `"ccsh"`: coupled cause-specific boosters. Each round grows one shared
+    tree whose splits are ranked by Fisher's combination of the per-cause
+    score p-values, with leaf values fitted separately per cause.
+* Competing risks are triggered by `comrisk`, by a multi-state
+  `survival::Surv(time, factor(status))` response (formula interface
+  included), or by a `status` with 0 and at least two event codes. Validation
+  data and early stopping work for all three options.
+* New `predict.fastgbm_comrisk()`: `type = "cif"` returns one cumulative
+  incidence matrix per cause, computed as in `CoxBoost::predict(type =
+  "CIF")` from 'CoxBoost' 1.5.2 on; `"link"` and `"response"` return one
+  column per cause. For `"csh"` and `"ccsh"`, at each event time the
+  all-cause event probability is split between causes in proportion to their
+  hazard jumps, so each incidence is non-decreasing, constant between event
+  times, and the incidences add up to one minus the all-cause survival.
+  `importance()` aggregates over the per-cause sub-models.
+
+## Bug fixes
+
+* Histogram bin cuts are now placed midway between consecutive unique
+  values, so each group of unique values gets its own bin (a 0/1 feature is
+  cut at 0.5). Previously a cut could equal an observed value and merge
+  adjacent groups. Fitted models can differ slightly from earlier 0.7.0
+  builds.
+* Cause-specific cumulative incidence (`comrisk = "csh"`/`"ccsh"`) follows
+  the estimator of 'CoxBoost' 1.5.2 (accumulated event-time increments). It
+  used the earlier one (hazards interpolated between event times, then
+  rescaled), which no longer matched `CoxBoost::predict(type = "CIF")`.
+  'CoxBoost' (>= 1.5.2) in Suggests.
+
 # fastgbm 0.6.1
 
 ## CRAN resubmission fixes

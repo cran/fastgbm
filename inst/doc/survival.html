@@ -363,11 +363,11 @@ S_0(t)^{\exp(f(x))}\)</span>.</p>
 <span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>surv <span class="ot">&lt;-</span> <span class="fu">predict</span>(cox_fit, x[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, ], <span class="at">type =</span> <span class="st">&quot;survival&quot;</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">180</span>, <span class="dv">365</span>))</span>
 <span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>surv</span>
 <span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="co">#&gt;           [,1]      [,2]      [,3]</span></span>
-<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="co">#&gt; [1,] 0.9522407 0.8707755 0.6382920</span></span>
-<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co">#&gt; [2,] 0.9072084 0.7593050 0.4092590</span></span>
-<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="co">#&gt; [3,] 0.9582282 0.8863460 0.6760728</span></span>
-<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="co">#&gt; [4,] 0.9059485 0.7563272 0.4040743</span></span>
-<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="co">#&gt; [5,] 0.9547701 0.8773314 0.6540165</span></span></code></pre></div>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="co">#&gt; [1,] 0.9450843 0.8508288 0.5820841</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co">#&gt; [2,] 0.8912355 0.7194014 0.3318050</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="co">#&gt; [3,] 0.9495553 0.8623920 0.6090092</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="co">#&gt; [4,] 0.8796486 0.6929730 0.2927064</span></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="co">#&gt; [5,] 0.9588097 0.8866498 0.6683136</span></span></code></pre></div>
 </div>
 <div id="aft-objective-objective-aft" class="section level2">
 <h2>AFT objective (<code>objective = &quot;aft&quot;</code>)</h2>
@@ -413,11 +413,11 @@ hazard-over-time surface directly at the requested times.</p>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>                    <span class="at">objective =</span> <span class="st">&quot;pexp&quot;</span>, <span class="at">ntrees =</span> <span class="dv">100</span><span class="dt">L</span>, <span class="at">max_depth =</span> <span class="dv">3</span><span class="dt">L</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="fu">predict</span>(pexp_fit, x[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, ], <span class="at">type =</span> <span class="st">&quot;survival&quot;</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">180</span>, <span class="dv">365</span>))</span>
 <span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt;           [,1]      [,2]      [,3]</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; [1,] 0.9689721 0.8977238 0.7209522</span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; [2,] 0.9608723 0.8953829 0.7045686</span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; [3,] 0.9681084 0.9153831 0.7564132</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt; [4,] 0.9608207 0.8684158 0.6675388</span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; [5,] 0.9692716 0.9183865 0.7641165</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; [1,] 0.9565638 0.8743582 0.6509589</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; [2,] 0.9535909 0.8847102 0.6735456</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; [3,] 0.9660093 0.9089096 0.7219264</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt; [4,] 0.9601145 0.8667917 0.6372786</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; [5,] 0.9646079 0.9074814 0.7346549</span></span>
 <span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="fu">metrics</span>(pexp_fit, <span class="at">y =</span> <span class="fu">Surv</span>(lung_dat<span class="sc">$</span>time, lung_dat<span class="sc">$</span>status))</span>
 <span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#&gt; $objective</span></span>
 <span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co">#&gt; [1] &quot;pexp&quot;</span></span>
@@ -426,7 +426,7 @@ hazard-over-time surface directly at the requested times.</p>
 <span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co">#&gt; [1] &quot;cindex&quot;</span></span>
 <span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="co">#&gt; $value</span></span>
-<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="co">#&gt; [1] 0.6226105</span></span></code></pre></div>
+<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="co">#&gt; [1] 0.6538889</span></span></code></pre></div>
 </div>
 <div id="concordance" class="section level2">
 <h2>Concordance</h2>
@@ -438,7 +438,7 @@ hazard-over-time surface directly at the requested times.</p>
 <span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;cindex&quot;</span></span>
 <span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt; $value</span></span>
-<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#&gt; [1] 0.7033984</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#&gt; [1] 0.7277738</span></span>
 <span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="fu">metrics</span>(aft_fit, <span class="at">y =</span> <span class="fu">Surv</span>(time, status))</span>
 <span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co">#&gt; $objective</span></span>
 <span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="co">#&gt; [1] &quot;aft&quot;</span></span>
@@ -458,7 +458,7 @@ imputation is performed unless you do it yourself.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>x_missing <span class="ot">&lt;-</span> x</span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>x_missing[<span class="dv">1</span>, <span class="st">&quot;ph.ecog&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
 <span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="fu">predict</span>(cox_fit, x_missing[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, ], <span class="at">type =</span> <span class="st">&quot;link&quot;</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co">#&gt; [1] -0.0681736  0.2065150 -0.6186579</span></span></code></pre></div>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co">#&gt; [1] -0.05848202  0.41962933 -0.37992960</span></span></code></pre></div>
 </div>
 
 
