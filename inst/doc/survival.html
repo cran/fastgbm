@@ -413,11 +413,11 @@ hazard-over-time surface directly at the requested times.</p>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>                    <span class="at">objective =</span> <span class="st">&quot;pexp&quot;</span>, <span class="at">ntrees =</span> <span class="dv">100</span><span class="dt">L</span>, <span class="at">max_depth =</span> <span class="dv">3</span><span class="dt">L</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="fu">predict</span>(pexp_fit, x[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, ], <span class="at">type =</span> <span class="st">&quot;survival&quot;</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">180</span>, <span class="dv">365</span>))</span>
 <span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt;           [,1]      [,2]      [,3]</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; [1,] 0.9565638 0.8743582 0.6509589</span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; [2,] 0.9535909 0.8847102 0.6735456</span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; [3,] 0.9660093 0.9089096 0.7219264</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt; [4,] 0.9601145 0.8667917 0.6372786</span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; [5,] 0.9646079 0.9074814 0.7346549</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; [1,] 0.9068361 0.8276604 0.5972436</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; [2,] 0.8578877 0.7490135 0.4442204</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; [3,] 0.9610722 0.8795288 0.6507440</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt; [4,] 0.9212330 0.7089648 0.3473486</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; [5,] 0.9415115 0.8314944 0.6085250</span></span>
 <span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="fu">metrics</span>(pexp_fit, <span class="at">y =</span> <span class="fu">Surv</span>(lung_dat<span class="sc">$</span>time, lung_dat<span class="sc">$</span>status))</span>
 <span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#&gt; $objective</span></span>
 <span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co">#&gt; [1] &quot;pexp&quot;</span></span>
@@ -426,7 +426,7 @@ hazard-over-time surface directly at the requested times.</p>
 <span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co">#&gt; [1] &quot;cindex&quot;</span></span>
 <span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="co">#&gt; $value</span></span>
-<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="co">#&gt; [1] 0.6538889</span></span></code></pre></div>
+<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="co">#&gt; [1] 0.6831698</span></span></code></pre></div>
 </div>
 <div id="concordance" class="section level2">
 <h2>Concordance</h2>

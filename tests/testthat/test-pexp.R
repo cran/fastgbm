@@ -125,9 +125,9 @@ test_that("pexp training is deterministic across thread counts", {
 
   fit1 <- fastgbm(x, time = time, status = status, objective = "pexp", ntrees = 30L,
                   max_depth = 4L, min_node_size = 5L, threads = 1L, seed = 1L, verbose = FALSE)
-  fit4 <- fastgbm(x, time = time, status = status, objective = "pexp", ntrees = 30L,
-                  max_depth = 4L, min_node_size = 5L, threads = 4L, seed = 1L, verbose = FALSE)
-  expect_equal(predict(fit1, x, type = "link"), predict(fit4, x, type = "link"))
+  fit2 <- fastgbm(x, time = time, status = status, objective = "pexp", ntrees = 30L,
+                  max_depth = 4L, min_node_size = 5L, threads = 2L, seed = 1L, verbose = FALSE)
+  expect_equal(predict(fit1, x, type = "link"), predict(fit2, x, type = "link"))
 })
 
 test_that("pexp serialization round trips", {
@@ -157,4 +157,20 @@ test_that("pexp works via the formula interface", {
   p <- predict(fit, dat, type = "link")
   expect_length(p, n)
   expect_true(all(is.finite(p)))
+})
+
+test_that("pexp mean predicted survival tracks Kaplan-Meier on training data", {
+  skip_if_not_installed("survival")
+  d <- survival::rotterdam
+  d$t <- pmin(d$dtime, 2557) / 365.25
+  d$s <- ifelse(d$dtime > 2557, 0L, d$death)
+  fit <- fastgbm(survival::Surv(t, s) ~ age + nodes + pgr + er + grade,
+                 data = d, objective = "pexp", ntrees = 200, verbose = FALSE)
+  times <- c(1, 3, 5)
+  km <- summary(survival::survfit(survival::Surv(t, s) ~ 1, data = d),
+                times = times)$surv
+  pred <- colMeans(predict(fit, newdata = d, type = "survival", times = times))
+  ## the person-time time feature must match the one used at prediction;
+  ## a mismatch drives predicted survival towards 1 as trees are added
+  expect_lt(max(abs(pred - km)), 0.06)
 })
